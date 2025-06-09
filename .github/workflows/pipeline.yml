@@ -38,7 +38,7 @@ jobs:
     # This job will only run after the Bucket job has completed successfully
     defaults:
       run:
-        working-directory: webApp/Terraform
+        working-directory: webApp
       
     steps:
     - name: Checkout code
