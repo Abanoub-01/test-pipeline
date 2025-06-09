@@ -6,13 +6,12 @@ on:
 
 jobs:
   terraform:
-    if: startsWith(github.event.head_commit.message, 'terraform apply')
+    # if: startsWith(github.event.head_commit.message, 'terraform apply')
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: backend
-
-        
+      
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
