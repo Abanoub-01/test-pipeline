@@ -1,17 +1,18 @@
-name: Terraform Apply
+name: App infrastructure deployment
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["Terraform Apply"]   # The name of the first workflow
+    types:
+      - completed
 
-    
 jobs:
   terraform:
     # if: startsWith(github.event.head_commit.message, 'terraform apply')
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: backend
+        working-directory: webApp
       
     steps:
     - name: Checkout code
