@@ -6,7 +6,7 @@ on:
 
 jobs:
   terraform:
-    # if: startsWith(github.event.head_commit.message, 'terraform destroy')
+    if: startsWith(github.event.head_commit.message, 'terraform destroy')
     runs-on: ubuntu-latest
     defaults:
       run:

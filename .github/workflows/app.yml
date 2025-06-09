@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: webApp
+        working-directory: ./webApp/Terraform
       
     steps:
     - name: Checkout code
