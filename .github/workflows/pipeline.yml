@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
 
-    
 jobs:
   Bucket:
     # if: startsWith(github.event.head_commit.message, 'terraform apply')
