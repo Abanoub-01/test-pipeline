@@ -10,35 +10,15 @@ output "vpc_id" {
 
 output "public_url" {
   description = "Public URL for our Web Server"
-  value       = "https://${aws_instance.web_server.public_ip}:8080/index.html"
+  value = "https://${aws_instance.web_server.public_ip}:8080/index.html"
 }
 
 output "vpc_information" {
   description = "VPC Information about Environment"
-  value       = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
+  value = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
 }
 
 output "ec2_ami" {
   description = "Web server ami version"
-  value       = "Ubuntu server of ami ${data.aws_ami.ubuntu.id}"
-}
-
-output "server_public_ip" {
-  value = module.server.public_ip
-}
-
-# output "server_public_dns" {
-#   value = module.server.public_dns
-# }
-
-output "public_ip_server_backup" {
-  value = module.server_backup.public_ip
-}
-
-# output "public_dns_server_backup" {
-#   value = module.server_backup.public_dns
-# }
-
-output "size" {
-  value = module.server.size
+  value = "Ubuntu server of ami ${data.aws_ami.ubuntu.id}"
 }
