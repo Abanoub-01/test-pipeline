@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
 
 data "aws_eks_cluster_auth" "eks_cluster" {
@@ -20,12 +20,12 @@ provider "helm" {
 
 
 data "http" "chart_values" {
-  url = "https://github.com/mariomafdyhabib/grad_project/blob/deployment/app/values.yaml"
+  url = "https://github.com/Abanoub-01/test-pipeline/blob/main/app/values.yaml"
 }
 
 resource "helm_release" "my_chart" {
   name       = "my-helm-app"
-  repository = "https://github.com/mariomafdyhabib/grad_project.git/deployment"
+  repository = "https://github.com/Abanoub-01/test-pipeline/tree/main"
   chart      = "app"
   namespace  = "default"
 
@@ -57,7 +57,7 @@ resource "helm_release" "my_chart" {
 
   set {
     name  = "region"
-    value = "us-east-2"
+    value = "us-east-1"
   }
   
 
@@ -79,7 +79,7 @@ module "vpc" {
   vpc_name       = "Mario-VPC"
   public_subnets = ["10.0.1.0/24", "10.0.3.0/24"]
   private_subnets = ["10.0.2.0/24", "10.0.4.0/24"]
-  azs            = ["us-east-2a", "us-east-2b"]
+  azs            = ["us-east-1a", "us-east-1b"]
   cluster_name   = "Mario-eks-cluster"
 }
 module "security_group" {
@@ -198,7 +198,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   values = [
     yamlencode({
       clusterName = module.eks.cluster_name
-      region      = "us-east-2"
+      region      = "us-east-1"
       vpcId       = module.vpc.vpc_id
       serviceAccount = {
         create = false
@@ -215,7 +215,7 @@ terraform {
   backend "s3" {
     bucket         = "7erafy-bucket"
     key            = "terraform.tfstate"
-    region         = "us-east-2"
+    region         = "us-east-1"
     dynamodb_table = "terraform-locks" # optional but recommended for locking
   }
 }
